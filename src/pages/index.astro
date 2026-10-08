@@ -1,0 +1,360 @@
+---
+import "@fontsource-variable/space-grotesk";
+import { projects } from "../projects";
+
+const repo = "https://github.com/kiliankoe/dresden.lol";
+const title = "dresden.lol – Projekte rund um Dresden";
+const description =
+  "Kleine Werkzeuge, Karten und Datenprojekte rund um Dresden.";
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.site} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <link rel="canonical" href={Astro.site} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script is:inline async src="https://t.kilko.de/js/pa-_tJ_xyK4kEHRUH44Gx8cz.js"></script>
+    <script is:inline>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
+  </head>
+  <body>
+    <header>
+      <p class="eyebrow">Projekte aus und für Dresden</p>
+      <h1>dresden<span>.lol</span></h1>
+      <p class="lede">
+        Kleine Werkzeuge, Karten und Datenprojekte rund um Dresden. Gebaut von
+        Leuten, die hier wohnen, und offen für alle, die etwas beitragen wollen.
+      </p>
+      <svg class="elbe" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 40 C 150 0, 300 80, 450 40 S 750 0, 900 40 S 1100 80, 1200 40" />
+      </svg>
+    </header>
+
+    <main>
+      <ul class="grid">
+        {
+          projects.map((p) => (
+            <li class="card">
+              <a class="card-link" href={p.url}>
+                <span class="emoji" aria-hidden="true">{p.emoji}</span>
+                <h2>{p.name}</h2>
+                <span class="host">{new URL(p.url).host}</span>
+              </a>
+              <p>{p.description}</p>
+              <p class="meta">
+                von <a href={p.author.url}>{p.author.name}</a>
+                {p.source && (
+                  <>
+                    {" · "}
+                    <a href={p.source}>Quelltext</a>
+                  </>
+                )}
+              </p>
+            </li>
+          ))
+        }
+        <li class="card card-cta">
+          <a class="card-link" href="#mitmachen">
+            <span class="emoji" aria-hidden="true">✨</span>
+            <h2>Dein Projekt?</h2>
+            <span class="host placeholder">deinprojekt.dresden.lol</span>
+          </a>
+          <p>Hier ist noch Platz.</p>
+        </li>
+      </ul>
+
+      <section id="mitmachen">
+        <h2>Mitmachen</h2>
+        <p>
+          Wenn du etwas für oder um Dresden gebaut hast, eine Karte, ein Tool
+          oder was auch immer, nehmen wir es hier gern mit auf.
+        </p>
+        <p class="actions">
+          <a class="button" href={`${repo}/edit/main/src/projects.ts`}>Projekt eintragen</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        <a href={repo}>Quelltext auf GitHub</a>.
+      </p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #f6f5f0;
+    --fg: #16181d;
+    --muted: #5b606b;
+    --card: #ffffff;
+    --border: #e3e1d8;
+    --elbe: #1765c0;
+    --accent: #047857;
+    --display: "Space Grotesk Variable", system-ui, sans-serif;
+    color-scheme: light dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115;
+      --fg: #eceae4;
+      --muted: #9aa0ab;
+      --card: #171a20;
+      --border: #272b33;
+      --elbe: #5aa7ff;
+      --accent: #34d399;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 1.0625rem/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  code {
+    font: 0.9em ui-monospace, "SF Mono", Menlo, monospace;
+  }
+</style>
+
+<style>
+  header,
+  main,
+  footer {
+    width: min(70rem, 100% - 3rem);
+    margin-inline: auto;
+  }
+
+  header {
+    padding-block: clamp(4rem, 12vw, 8rem) 2rem;
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    margin: 0.25rem 0 1rem;
+    font-family: var(--display);
+    font-size: clamp(3.5rem, 13vw, 8.5rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  h1 span {
+    background: linear-gradient(100deg, var(--elbe), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lede {
+    max-width: 38rem;
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--muted);
+  }
+
+  .elbe {
+    display: block;
+    width: 100%;
+    height: 3rem;
+    margin-top: 3rem;
+  }
+
+  .elbe path {
+    fill: none;
+    stroke: var(--elbe);
+    stroke-width: 3;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-3px);
+    border-color: var(--elbe);
+    box-shadow: 0 12px 32px -16px color-mix(in srgb, var(--elbe) 60%, transparent);
+  }
+
+  .card-link {
+    text-decoration: none;
+  }
+
+  /* Stretches the main link over the whole card while the author and
+     source links below stay clickable on top of it. */
+  .card-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .card-link:focus-visible {
+    outline: none;
+  }
+
+  .card-link:focus-visible::after {
+    outline: 2px solid var(--elbe);
+    outline-offset: 3px;
+  }
+
+  .meta a {
+    position: relative;
+    z-index: 1;
+  }
+
+  .emoji {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .card h2 {
+    margin: 1rem 0 0;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .host {
+    font: 0.875rem ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--elbe);
+  }
+
+  .host.placeholder {
+    color: var(--muted);
+  }
+
+  .card p {
+    margin: 0.75rem 0 0;
+  }
+
+  .card .meta {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .card-cta {
+    background: transparent;
+    border-style: dashed;
+  }
+
+  .card-cta p {
+    color: var(--muted);
+  }
+
+  #mitmachen {
+    max-width: 42rem;
+    margin-block: 6rem;
+    scroll-margin-top: 2rem;
+  }
+
+  #mitmachen h2 {
+    margin: 0 0 1rem;
+    font-family: var(--display);
+    font-size: clamp(2rem, 6vw, 3rem);
+    letter-spacing: -0.03em;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .button {
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    background: var(--fg);
+    color: var(--bg);
+    font-family: var(--display);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .button:hover {
+    opacity: 0.85;
+  }
+
+  .button.secondary {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border);
+  }
+
+  footer {
+    padding-block: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      transition: none;
+    }
+
+    .card:hover,
+    .card:focus-within {
+      transform: none;
+    }
+  }
+</style>
