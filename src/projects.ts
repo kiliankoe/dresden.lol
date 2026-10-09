@@ -21,7 +21,7 @@ export const projects: Project[] = [
     name: "ÖPNV Dresden",
     url: "https://oepnv.dresden.lol",
     description:
-      "Doku zu den Schnittstellen von VVO und DVB, mit Netzstatus, Abfahrtsmonitor, Haltestellensuche und GTFS-Daten zum Herunterladen.",
+      "Doku zu ÖPNV-Daten von VVO und DVB, verfügbaren Apps, Visualisierungen und mehr.",
     author: { name: "Kilian", url: "https://github.com/kiliankoe" },
     source: "https://github.com/kiliankoe/vvo",
     emoji: "🚋",
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     name: "Wo knallt's?",
     url: "https://woknallts.dresden.lol",
     description:
-      "Wenn es mal wieder knallt. Zeigt die angemeldeten Feuerwerke in Dresden.",
+      "Wenn es mal wieder knallt, zeigt die angemeldeten Feuerwerke in Dresden.",
     author: { name: "Kilian", url: "https://github.com/kiliankoe" },
     source: "https://github.com/kiliankoe/woknallts",
     emoji: "🎆",
