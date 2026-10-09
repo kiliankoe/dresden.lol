@@ -35,6 +35,14 @@ export const projects: Project[] = [
     emoji: "🌊",
   },
   {
+    name: "Ratsinfo",
+    url: "https://github.com/offenesdresden/dresden-ratsinfo",
+    description:
+      "Mirror aller Daten aus dem Ratsinformationssystem im OParl-Format, mit Sitzungskalender als iCal.",
+    author: { name: "Astro", url: "https://github.com/astro" },
+    emoji: "🏛️",
+  },
+  {
     name: "Dresdens Straßen",
     url: "https://strassen.dresden.lol",
     description: "Alle Straßen der Stadt, die nach Menschen benannt sind.",
