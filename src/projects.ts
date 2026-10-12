@@ -59,4 +59,13 @@ export const projects: Project[] = [
     source: "https://github.com/kiliankoe/woknallts",
     emoji: "🎆",
   },
+  {
+    name: "TLMS Live-Karte",
+    url: "https://kid.tlm.solutions/de/map/",
+    description:
+      "Live-Karte der Straßenbahnen und Busse, gespeist aus mitgeschnittenen Funktelegrammen der Fahrzeuge.",
+    author: { name: "TLM Solutions", url: "https://github.com/tlm-solutions" },
+    source: "https://github.com/tlm-solutions/kindergarten",
+    emoji: "📡",
+  },
 ];
